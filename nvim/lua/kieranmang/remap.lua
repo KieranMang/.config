@@ -19,3 +19,5 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "db", "dbx")
 
 vim.keymap.set("n", "<leader>f", "<cmd>Neoformat<CR>")
+
+vim.keymap.set("n", "<leader>;", "maA;<esc>`a<cmd>delmarks a<CR>")
