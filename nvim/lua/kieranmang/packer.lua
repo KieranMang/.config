@@ -7,11 +7,21 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+
+
+    -- File Navigation
+
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  use('ThePrimeagen/harpoon')
+
+
+
+    -- Visuals
 
   use ({
 	  "catppuccin/nvim",
@@ -21,9 +31,29 @@ return require('packer').startup(function(use)
           end
    })
 
-use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 use('nvim-treesitter/playground')
-use('ThePrimeagen/harpoon')
+
+use {
+    "goolord/alpha-nvim",
+    requires = {"kyazdani42/nvim-web-devicons"},
+    config = function()
+
+        vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
+    end
+}
+
+use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
+
+use {'sbdchd/neoformat'}
+
+
+
+-- Utilities
+
 use('mbbill/undotree')
 
 use {
@@ -49,21 +79,13 @@ use {
 	  }
   }
 
-use {
-        "goolord/alpha-nvim",
-        requires = {"kyazdani42/nvim-web-devicons"},
-        config = function()
-
-            vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
-        end
-    }
-
-use{'ThePrimeagen/vim-be-good'}
 
 use{'christoomey/vim-tmux-navigator'}
 
-use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
+
+
+-- Other Stuff
+
+use{'ThePrimeagen/vim-be-good'}
+
 end)
