@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
           config = function()
 	          vim.cmd('colorscheme catppuccin-mocha')
           end
-   })
+      })
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 use('nvim-treesitter/playground')

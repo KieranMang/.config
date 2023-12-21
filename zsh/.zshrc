@@ -42,19 +42,31 @@ GoParentDirs() {
       cd ..
   done
 
-  # Check if there are additional arguments
   if [[ $# == 0 ]]; then
       cd ..
   fi
 }
 
+GoToDir() {
+    if [[ $# == 0 ]]; then
+        cd $(find ~/ -type d | fzf --height 40%)
+
+    else
+        cd $1
+    fi
+}
+
 alias ..='GoParentDirs'
-alias la='ls -a'
-alias lal='la -al'
+alias cd='GoToDir'
+
+alias ls='exa'
+alias la='exa --all --long'
+alias lstr='exa --tree'
 
 alias reload='source ~/.config/zsh/.zshrc'
 
 alias nv='nvim'
+alias ffnv='nv $(find ~/ -type d | fzf --height 40%)'
 
 #########################   Powerlevel10K Setup   ##################################
 
