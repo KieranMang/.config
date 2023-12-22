@@ -56,8 +56,8 @@ alias lstr='exa --tree'
 alias reload='source ~/.config/zsh/.zshrc'
 
 alias nv='nvim'
-alias ff='cd $(find ~/ -type d | fzf --height 40%)'
-alias ffnv='nv $(find ~/ -type d | fzf --height 40%)'
+alias ff='cd $(find ~/ -type d 2>/dev/null | fzf --height 40%)'
+alias ffnv='nv $(find ~/ -type d 2>/dev/null | fzf --height 40%)'
 
 #########################   Powerlevel10K Setup   ##################################
 
