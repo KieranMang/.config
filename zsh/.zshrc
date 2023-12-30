@@ -5,6 +5,7 @@ then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
 
+
 HISTSIZE=5000
 HISTFILE=~/.config/zsh/.zsh_history
 SAVEHIST=5000
@@ -58,6 +59,8 @@ alias reload='source ~/.config/zsh/.zshrc'
 alias nv='nvim'
 alias ff='cd $(find ~/ -type d 2>/dev/null | fzf --height 40%)'
 alias ffnv='nv $(find ~/ -type d 2>/dev/null | fzf --height 40%)'
+
+alias emacs="emacsclient -c -a 'nvim'"
 
 #########################   Powerlevel10K Setup   ##################################
 
