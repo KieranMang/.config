@@ -11,13 +11,15 @@ return require('packer').startup(function(use)
 
     -- File Navigation
 
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
+use 'junegunn/fzf'
+use 'junegunn/fzf.vim'
 
-  use('ThePrimeagen/harpoon')
+use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+}
 
 
 

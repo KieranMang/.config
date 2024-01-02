@@ -121,6 +121,16 @@ _G.packer_plugins = {
     path = "/Users/kieranmang/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  fzf = {
+    loaded = true,
+    path = "/Users/kieranmang/.local/share/nvim/site/pack/packer/start/fzf",
+    url = "https://github.com/junegunn/fzf"
+  },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/Users/kieranmang/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    url = "https://github.com/junegunn/fzf.vim"
+  },
   harpoon = {
     loaded = true,
     path = "/Users/kieranmang/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -180,11 +190,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/kieranmang/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["telescope.nvim"] = {
-    loaded = true,
-    path = "/Users/kieranmang/.local/share/nvim/site/pack/packer/start/telescope.nvim",
-    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   undotree = {
     loaded = true,
