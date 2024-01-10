@@ -57,6 +57,8 @@ use {'sbdchd/neoformat'}
 
 -- Utilities
 
+use('lervag/vimtex')
+
 use('mbbill/undotree')
 
 use {
