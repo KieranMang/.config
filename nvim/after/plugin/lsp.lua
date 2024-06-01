@@ -17,6 +17,10 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
   ['<Tab>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
+  ['<CR>'] = {
+    i = ...,
+    c = cmp.config.disable
+  }
 })
 
 lsp.setup_nvim_cmp({

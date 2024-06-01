@@ -1,5 +1,6 @@
 ################################   Settings   #####################################
 
+
 if [ -z "$TMUX" ]
 then
     tmux attach -t TMUX || tmux new -s TMUX
@@ -60,7 +61,6 @@ alias nv='nvim'
 alias ff='cd $(find ~/ -type d 2>/dev/null | fzf --height 40%)'
 alias ffnv='nv $(find ~/ -type d 2>/dev/null | fzf --height 40%)'
 
-alias emacs="emacsclient -c -a 'nvim'"
 
 #########################   Powerlevel10K Setup   ##################################
 

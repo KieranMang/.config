@@ -67,8 +67,7 @@ dashboard.section.footer.val = {
 
 dashboard.section.buttons.val = {
     dashboard.button("<Leader>pv", "󰉋 File Explorer"),
-    dashboard.button("<Leader>pf", "  Find File"),
-    dashboard.button("<Leader>ps", "  Find Word"),
+    dashboard.button("<Leader>ff", "  Find File"),
     dashboard.button("q", "󰩈 Quit", ":qa<cr>")
 }
 
