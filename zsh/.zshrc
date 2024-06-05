@@ -1,12 +1,11 @@
 ################################   Settings   #####################################
 
-neofetch
-
 if [ -z "$TMUX" ]
 then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
 
+neofetch
 
 HISTSIZE=5000
 HISTFILE=~/.config/zsh/.zsh_history
