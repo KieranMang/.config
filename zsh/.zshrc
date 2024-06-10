@@ -1,10 +1,62 @@
-################################   Settings   #####################################
+################################   Warp Settings   #####################################
 
-if [ -z "$TMUX" ]
-then
-    tmux attach -t TMUX || tmux new -s TMUX
-fi
+fastfetch
 
+HISTSIZE=5000
+HISTFILE=~/.config/zsh/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Aliases
+
+GoParentDirs() {
+    local levels=0
+
+  # Count the number of '..' occurrences
+    while [[ $1 == '..' ]]; do
+        ((levels++))
+        shift
+    done
+
+  # Perform the 'cd ..' operations
+  for ((i = 1; i <= levels; i++)); do
+      cd ..
+  done
+
+  if [[ $# == 0 ]]; then
+      cd ..
+  fi
+}
+
+alias ..='GoParentDirs'
+
+alias ls='exa'
+alias la='exa --all --long'
+alias lstr='exa --tree'
+
+alias reload='source ~/.config/zsh/.zshrc'
+
+alias nv='nvim'
+alias ff='cd "$(find ~/ -type d 2>/dev/null | fzf --height 40%)"'
+alias ffnv='nv "$(find ~/ -type d 2>/dev/null | fzf --height 40%)"'
+
+eval "$(starship init zsh)"
+
+################################   iTerm2 Settings   #####################################
+
+: <<'comment'
+#if [ -z "$TMUX" ]
+#then
+#    tmux attach -t TMUX || tmux new -s TMUX
+#fi
+#
 neofetch
 
 HISTSIZE=5000
@@ -21,8 +73,10 @@ setopt hist_find_no_dups
 
 # Case insensitive completion
 
-autoload -U compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+autoload -Uz +X compinit && compinit
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 # Vim Bindings
 
@@ -85,3 +139,4 @@ ZSH_AUTOSUGGEST_STRATEGY=completion
 
 source ~/.config/zsh/plugins/catppuccin-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+comment
