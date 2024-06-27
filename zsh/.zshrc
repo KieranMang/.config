@@ -6,6 +6,9 @@ HISTSIZE=5000
 HISTFILE=~/.config/zsh/.zsh_history
 SAVEHIST=5000
 HISTDUP=erase
+
+export BAT_THEME='catppuccin'
+
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
@@ -44,8 +47,9 @@ alias lstr='exa --tree'
 alias reload='source ~/.config/zsh/.zshrc'
 
 alias nv='nvim'
-alias ff='cd "$(find ~/ -type d 2>/dev/null | fzf --height 40%)"'
-alias ffnv='nv "$(find ~/ -type d 2>/dev/null | fzf --height 40%)"'
+alias ff='cd "$(dirname "$(fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)")"'
+alias ffnv='nv "$(fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)"'
+
 
 eval "$(starship init zsh)"
 
