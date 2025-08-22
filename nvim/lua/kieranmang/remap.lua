@@ -16,6 +16,9 @@ vim.keymap.set("n", "<leader>;", "maA;<esc>`a<cmd>delmarks a<CR>")
 
 vim.keymap.set("n", "<leader>k", "maO<esc>`a<cmd>delmarks a<CR>")
 vim.keymap.set("n", "<leader>j", "mao<esc>`a<cmd>delmarks a<CR>")
+-- vim.keymap.set("i", "(", "()<esc>i")
+-- vim.keymap.set("i", "'", "''<esc>i")
+-- vim.keymap.set("i", "\"", "\"\"<esc>i")
 
 vim.keymap.set("n", "<leader>ff", "<cmd>Files<CR>")
 vim.keymap.set("n", "<leader>gf", "<cmd>GFiles<CR>")

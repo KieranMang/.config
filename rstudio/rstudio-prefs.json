@@ -1,0 +1,11 @@
+{
+    "editor_theme": "gruvboxr",
+    "initial_working_directory": "~/Developer/R",
+    "posix_terminal_shell": "bash",
+    "font_size_points": 12,
+    "help_font_size_points": 12,
+    "num_spaces_for_tab": 4,
+    "default_project_location": "~/Developer/R",
+    "editor_keybindings": "vim",
+    "jobs_tab_visibility": "shown"
+}

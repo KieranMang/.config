@@ -48,6 +48,17 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 end)
 
+-- Configure ast-grep LSP to use the config in ~/.config/ast-grep
+local lspconfig = require('lspconfig')
+lspconfig.ast_grep.setup({
+  cmd = {
+    "/Users/kieranmang/.local/share/nvim/mason/bin/ast-grep",
+    "lsp",
+    "--config",
+    "/Users/kieranmang/.config/ast-grep/sgconfig.yml"
+  },
+})
+
 lsp.setup()
 
 vim.diagnostic.config({
