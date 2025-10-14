@@ -1,6 +1,4 @@
 ################################   Warp Settings   #####################################
-source ~/.zshrc
-
 fastfetch
 
 HISTSIZE=5000
@@ -48,8 +46,8 @@ alias lstr='eza --tree'
 alias reload='source ~/.config/zsh/.zshrc'
 
 alias nv='nvim'
-alias ff='cd "$(dirname "$(fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)")"'
-alias ffnv='nv "$(fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)"'
+alias ff='cd "$(dirname "$(find ~/Developer -type f | fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)")"'
+alias ffnv='nv "$(find ~/Developer -type f | fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)"'
 
 eval "$(starship init zsh)"
 
