@@ -49,8 +49,8 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- Configure ast-grep LSP to use the config in ~/.config/ast-grep
-local lspconfig = require('lspconfig')
-lspconfig.ast_grep.setup({
+-- This needs to be done before lsp.setup()
+lsp.configure('ast_grep', {
   cmd = {
     "/Users/kieranmang/.local/share/nvim/mason/bin/ast-grep",
     "lsp",

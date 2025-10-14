@@ -33,3 +33,7 @@ vim.opt.updatetime = 50
 vim.opt.fillchars = {eob = " "}
 
 vim.opt.scrolloff = 999
+
+vim.opt_local.spell = true
+vim.opt_local.spelllang = "en_us"
+
