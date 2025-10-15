@@ -1,6 +1,7 @@
 ################################   Warp Settings   #####################################
 fastfetch
 
+
 HISTSIZE=5000
 HISTFILE=~/.config/zsh/.zsh_history
 SAVEHIST=5000
@@ -51,17 +52,19 @@ alias ffnv='nv "$(find ~/Developer -type f | fzf --preview '\''bat --style=numbe
 
 eval "$(starship init zsh)"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
+# Lazy load conda for faster shell startup
+conda() {
+    unset -f conda
+    __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/opt/miniconda3/bin:$PATH"
+        if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/opt/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/miniconda3/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+    unset __conda_setup
+    conda "$@"
+}
