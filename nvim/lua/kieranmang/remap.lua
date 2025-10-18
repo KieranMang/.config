@@ -25,3 +25,5 @@ vim.keymap.set("n", "<leader>gf", "<cmd>GFiles<CR>")
 vim.keymap.set("n", "<leader>sf", "<cmd>GFiles?<CR>")
 
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
+
+vim.keymap.set('n', 'q:', '<Nop>', { noremap = true, silent = true })
