@@ -10,6 +10,9 @@ HISTDUP=erase
 export BAT_THEME='catppuccin'
 export TERM=xterm-256color
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
@@ -69,3 +72,6 @@ conda() {
     unset __conda_setup
     conda "$@"
 }
+export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
