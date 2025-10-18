@@ -8,6 +8,7 @@ SAVEHIST=5000
 HISTDUP=erase
 
 export BAT_THEME='catppuccin'
+export TERM=xterm-256color
 
 setopt appendhistory
 setopt sharehistory
