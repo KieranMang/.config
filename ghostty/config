@@ -1,7 +1,7 @@
 theme = Catppuccin Mocha
 #custom-shader = ~/.config/ghostty/shaders/bettercrt.glsl
 #custom-shader = ~/.config/ghostty/shaders/tft.glsl
-custom-shader = ~/.config/ghostty/shaders/bloom.glsl
+#custom-shader = ~/.config/ghostty/shaders/bloom.glsl
 #custom-shader = ~/.config/ghostty/shaders/retro-terminal.glsl
 
 font-size = 16
