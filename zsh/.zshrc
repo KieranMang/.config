@@ -1,3 +1,23 @@
+fzf_tmux() {
+  # Get list of sessions, add a "New Session" option
+  local session
+  session=$( (tmux ls 2>/dev/null; echo "New Session") | fzf --height 40% --layout=reverse --border --prompt="Tmux> " )
+
+  # If user pressed ESC or canceled, exit
+  [[ -z "$session" ]] && return
+
+  if [[ "$session" == "New Session" ]]; then
+    tmux new
+  else
+    # Extract session name (before the first ':')
+    session_name="${session%%:*}"
+    tmux attach -t "$session_name"
+  fi
+}
+
+if [[ -z "$TMUX"]] then
+  fzf_tmux
+fi
 fastfetch
 
 [[ -r ~/Repos/znap/znap.zsh ]] ||
@@ -63,7 +83,11 @@ bindkey -v
 znap source zsh-users/zsh-autosuggestions
 bindkey '^I' autosuggest-accept
 
-znap eval conda "/opt/miniconda3/bin/conda shell.zsh hook"
+conda() {
+    unset -f conda
+    eval "$(/opt/miniconda3/bin/conda shell.zsh hook)"
+    command conda "$@"
+}
 
 export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
