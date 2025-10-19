@@ -18,9 +18,7 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:teal bg:blue)\
-$docker_context\
-[](fg:blue bg:pink)\
+[](fg:teal bg:pink)\
 $time\
 [ ](fg:pink)\
 $line_break$character"""

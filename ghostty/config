@@ -1,0 +1,8 @@
+theme = Catppuccin Mocha
+font-size = 16
+cursor-style = block
+cursor-style-blink = true
+maximize
+quick-terminal-position = center
+font-feature = -calt
+font-thicken

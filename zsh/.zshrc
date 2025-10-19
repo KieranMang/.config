@@ -1,6 +1,9 @@
-################################   Warp Settings   #####################################
 fastfetch
 
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+source ~/Repos/znap/znap.zsh
 
 HISTSIZE=5000
 HISTFILE=~/.config/zsh/.zsh_history
@@ -20,8 +23,6 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-
-# Aliases
 
 GoParentDirs() {
     local levels=0
@@ -54,24 +55,15 @@ alias nv='nvim'
 alias ff='cd "$(dirname "$(find ~/Developer -type f | fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)")"'
 alias ffnv='nv "$(find ~/Developer -type f | fzf --preview '\''bat --style=numbers --color=always --line-range=:500 {}'\'' --preview-window=right:60%)"'
 
-eval "$(starship init zsh)"
+type starship_zle-keymap-select >/dev/null || \
+  {
+    eval "$(starship init zsh)"
+  }
+bindkey -v
+znap source zsh-users/zsh-autosuggestions
+bindkey '^I' autosuggest-accept
 
-# Lazy load conda for faster shell startup
-conda() {
-    unset -f conda
-    __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/opt/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/opt/miniconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    conda "$@"
-}
-export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+znap eval conda "/opt/miniconda3/bin/conda shell.zsh hook"
+
 export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
