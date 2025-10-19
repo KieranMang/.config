@@ -1,8 +1,15 @@
 theme = Catppuccin Mocha
+
 font-size = 16
+
 cursor-style = block
 cursor-style-blink = true
+
 maximize
-quick-terminal-position = center
+
 font-feature = -calt
 font-thicken
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-animation-duration = 0
