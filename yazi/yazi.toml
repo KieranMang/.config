@@ -1,2 +1,5 @@
 [mgr]
 sort_by = "mtime"
+ratio = [2,3,3]
+[input]
+cursor_blink = true
