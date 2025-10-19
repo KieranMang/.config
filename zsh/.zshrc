@@ -15,7 +15,7 @@ fzf_tmux() {
   fi
 }
 
-if [[ -z "$TMUX"]] then
+if [[ -z "$TMUX" ]] then
   fzf_tmux
 fi
 fastfetch
