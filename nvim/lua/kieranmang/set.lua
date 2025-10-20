@@ -24,7 +24,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 999
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -32,8 +32,14 @@ vim.opt.updatetime = 50
 
 vim.opt.fillchars = {eob = " "}
 
-vim.opt.scrolloff = 999
-
 vim.opt_local.spell = true
 vim.opt_local.spelllang = "en_us"
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 200,
+        })
+    end,
+})
