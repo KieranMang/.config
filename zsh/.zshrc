@@ -18,6 +18,8 @@ fzf_tmux() {
 if [[ -z "$TMUX" ]] then
   fzf_tmux
 fi
+
+
 fastfetch
 
 [[ -r ~/Repos/znap/znap.zsh ]] ||
@@ -30,7 +32,7 @@ HISTFILE=~/.config/zsh/.zsh_history
 SAVEHIST=5000
 HISTDUP=erase
 
-export BAT_THEME='catppuccin'
+export BAT_THEME="gruvbox-dark"
 export TERM=xterm-256color
 export EDITOR="nvim"
 
@@ -82,7 +84,8 @@ type starship_zle-keymap-select >/dev/null || \
   }
 bindkey -v
 znap source zsh-users/zsh-autosuggestions
-bindkey '^I' autosuggest-accept
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#504945,underline"
+bindkey '^Y' autosuggest-accept
 
 conda() {
     unset -f conda
