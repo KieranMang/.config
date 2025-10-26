@@ -47,6 +47,11 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+ eval "$(zoxide init zsh)"
+alias cd='z'
+alias cdi='z'
+
+
 GoParentDirs() {
     local levels=0
 
@@ -88,6 +93,8 @@ znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#504945,underline"
 bindkey '^Y' autosuggest-accept
 
+znap eval $(thefuck --alias)
+
 conda() {
     unset -f conda
     eval "$(/opt/miniconda3/bin/conda shell.zsh hook)"
@@ -95,6 +102,7 @@ conda() {
 }
 
 export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+export PATH=$PATH:/opt/local/bin
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
 
 # Yazi Config;
