@@ -1,1 +1,1 @@
-require('kieranmang')
+require("config")
