@@ -93,7 +93,11 @@ znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#504945,underline"
 bindkey '^Y' autosuggest-accept
 
-znap eval $(thefuck --alias)
+eval $(thefuck --alias)
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 conda() {
     unset -f conda
