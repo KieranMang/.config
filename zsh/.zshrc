@@ -95,24 +95,23 @@ bindkey '^Y' autosuggest-accept
 
 eval $(thefuck --alias)
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
-conda() {
-    unset -f conda
-    eval "$(/opt/miniconda3/bin/conda shell.zsh hook)"
-    command conda "$@"
-}
 
 export PATH="/opt/homebrew/bin:/opt/local/bin:/opt/homebrew/opt/qt@5/bin:$PATH"
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
 
-# Yazi Config;
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
+}
+
+conda() { unset -f conda
+    eval "$(/opt/miniconda3/bin/conda shell.zsh hook)"
+    command conda "$@"
 }
