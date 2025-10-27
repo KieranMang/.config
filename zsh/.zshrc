@@ -105,7 +105,7 @@ conda() {
     command conda "$@"
 }
 
-export PATH="/opt/homebrew/bin:opt/local/bin:/opt/homebrew/opt/qt@5/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/local/bin:/opt/homebrew/opt/qt@5/bin:$PATH"
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
 
 # Yazi Config;
