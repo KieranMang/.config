@@ -4,6 +4,7 @@ theme = gruvbox-material-hard-dark
 #custom-shader = ~/.config/ghostty/shaders/tft.glsl
 #custom-shader = ~/.config/ghostty/shaders/bloom.glsl
 #custom-shader = ~/.config/ghostty/shaders/retro-terminal.glsl
+#custom-shader = ~/.config/ghostty/shaders/cursor_tail.glsl
 title = " "
 
 font-size = 16

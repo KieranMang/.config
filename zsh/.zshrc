@@ -1,3 +1,5 @@
+##zmodload zsh/zprof
+
 fzf_tmux() {
   # Get list of sessions, add a "New Session" option
   local session
@@ -26,6 +28,8 @@ fastfetch
     git clone --depth 1 -- \
         https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
 source ~/Repos/znap/znap.zsh
+
+znap eval compinit 'autoload -Uz compinit && compinit'
 
 HISTSIZE=5000
 HISTFILE=~/.config/zsh/.zsh_history
@@ -93,15 +97,13 @@ znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#504945,underline"
 bindkey '^Y' autosuggest-accept
 
-eval $(thefuck --alias)
-
-
 export PATH="/opt/homebrew/bin:/opt/local/bin:/opt/homebrew/opt/qt@5/bin:$PATH"
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+eval "$(pyenv virtualenv-init -)"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -115,3 +117,5 @@ conda() { unset -f conda
     eval "$(/opt/miniconda3/bin/conda shell.zsh hook)"
     command conda "$@"
 }
+
+#zprof
