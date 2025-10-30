@@ -2,8 +2,11 @@
 # and not already in tmux
 
 function fzf_tmux
-    set session (tmux ls 2>/dev/null; or true; echo "New Session" | fzf --height 40% --layout=reverse --border --prompt="Tmux> ")
-
+    set sessions (tmux ls 2>/dev/null; or true)
+    set session (begin
+        printf '%s\n' $sessions
+        echo "New Session"
+    end | fzf --height 40% --layout=reverse --border --prompt="Tmux> ") 
     if test -z "$session"
         return
     end
@@ -36,7 +39,7 @@ set -x TERM "xterm-256color"
 set -x LANG "en_US.UTF-8"
 set -x LC_ALL "en_US.UTF-8"
 
-bind ctrl-y accept-autosuggestion
+bind -M insert ctrl-y accept-autosuggestion
 set fish_color_autosuggestion "#504945"
 
 abbr --add vim nvim
@@ -79,12 +82,12 @@ end
 
 
 function y
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		builtin cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 #Lazyload conda for faster startup
