@@ -2,15 +2,18 @@
 # and not already in tmux
 
 function fzf_tmux
-    set sessions (tmux ls 2>/dev/null; or true)
+    set sessions (tmux ls 2>/dev/null)
     set session (begin
-        printf '%s\n' $sessions
+        if test -n "$sessions"
+            printf '%s\n' $sessions
+        end
         echo "New Session"
-    end | fzf --height 40% --layout=reverse --border --prompt="Tmux> ") 
+    end | fzf --height 40% --layout=reverse --border --prompt="Tmux> ")
+    
     if test -z "$session"
         return
     end
-
+    
     if test "$session" = "New Session"
         tmux new
     else
@@ -22,7 +25,6 @@ end
 if test -z "$TMUX"
     fzf_tmux
 end
-
 
 
 fastfetch
