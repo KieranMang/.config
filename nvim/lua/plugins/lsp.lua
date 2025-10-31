@@ -1,6 +1,6 @@
 return {
 
-------------------nvim-lspconfig-----------------
+    ------------------nvim-lspconfig-----------------
 
     {
         "neovim/nvim-lspconfig",
@@ -18,19 +18,77 @@ return {
                 end
             end)
 
+            -- Toggle warnings only (keeps errors visible)
+            local warnings_hidden = false
+            vim.keymap.set("n", "<leader>tw", function()
+                local current_config = vim.diagnostic.config()
+                local using_virtual_lines = current_config.virtual_lines
+
+                if warnings_hidden then
+                    -- Show all diagnostics - preserve virtual_text vs virtual_lines state
+                    if using_virtual_lines then
+                        vim.diagnostic.config({
+                            virtual_lines = {},
+                            virtual_text = false,
+                            signs = {},
+                            underline = {},
+                        })
+                    else
+                        vim.diagnostic.config({
+                            virtual_text = {},
+                            virtual_lines = false,
+                            signs = {},
+                            underline = {},
+                        })
+                    end
+                    warnings_hidden = false
+                    print("Diagnostics: Showing all")
+                else
+                    -- Show only errors - preserve virtual_text vs virtual_lines state
+                    if using_virtual_lines then
+                        vim.diagnostic.config({
+                            virtual_lines = {
+                                severity = { min = vim.diagnostic.severity.ERROR }
+                            },
+                            virtual_text = false,
+                            signs = {
+                                severity = { min = vim.diagnostic.severity.ERROR }
+                            },
+                            underline = {
+                                severity = { min = vim.diagnostic.severity.ERROR }
+                            },
+                        })
+                    else
+                        vim.diagnostic.config({
+                            virtual_text = {
+                                severity = { min = vim.diagnostic.severity.ERROR }
+                            },
+                            virtual_lines = false,
+                            signs = {
+                                severity = { min = vim.diagnostic.severity.ERROR }
+                            },
+                            underline = {
+                                severity = { min = vim.diagnostic.severity.ERROR }
+                            },
+                        })
+                    end
+                    warnings_hidden = true
+                    print("Diagnostics: Errors only")
+                end
+            end)
             vim.diagnostic.config({ virtual_text = true })
         end
 
     },
 
-----------------------mason----------------------
+    ----------------------mason----------------------
 
     {
         "mason-org/mason.nvim",
         opts = {}
     },
 
------------------mason-lspconfig-----------------
+    -----------------mason-lspconfig-----------------
 
     {
         "mason-org/mason-lspconfig.nvim",
@@ -41,7 +99,7 @@ return {
         },
     },
 
----------------------lazydev---------------------
+    ---------------------lazydev---------------------
 
     {
         "folke/lazydev.nvim",
