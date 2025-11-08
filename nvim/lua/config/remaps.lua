@@ -17,7 +17,7 @@ vim.keymap.set("n", "<leader>;", "maA;<esc>`a<cmd>delmarks a<CR>")
 vim.keymap.set("n", "<leader>k", "maO<esc>`a<cmd>delmarks a<CR>")
 vim.keymap.set("n", "<leader>j", "mao<esc>`a<cmd>delmarks a<CR>")
 
-vim.keymap.set("n", "<leader>fm", "magg=G`a<cmd>delmarks a<CR>")
+vim.keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -38,7 +38,7 @@ local function transform_repeated_digits()
     local start_col = start_pos[3]
     local end_col = end_pos[3]
 
-    if mode == '\22' or mode == '^V' then  -- \22 is Ctrl-V
+    if mode == '\22' or mode == '^V' then -- \22 is Ctrl-V
         local col_start = math.min(start_col, end_col)
         local col_end = math.max(start_col, end_col)
 
@@ -89,7 +89,6 @@ local function transform_repeated_digits()
             local new_line = line:sub(1, col_start - 1) .. result .. line:sub(col_end + 1)
             vim.fn.setline(line_num, new_line)
         end
-
     elseif mode == 'v' or mode == 'V' then
         if start_line ~= end_line then
             print("Multi-line selection only supported in visual block mode (Ctrl-v)")
@@ -118,4 +117,5 @@ local function transform_repeated_digits()
 end
 
 vim.api.nvim_create_user_command('TransformDigits', transform_repeated_digits, { range = true })
-vim.keymap.set('v', '<leader>ms', ':TransformDigits<CR>', { noremap = true, silent = true, desc = 'Make sequence from repeated digits' })
+vim.keymap.set('v', '<leader>ms', ':TransformDigits<CR>',
+    { noremap = true, silent = true, desc = 'Make sequence from repeated digits' })

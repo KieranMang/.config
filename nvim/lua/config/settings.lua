@@ -1,7 +1,7 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
-vim.opt.fillchars = {eob = " "}
+vim.opt.fillchars = { eob = " " }
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -33,6 +33,8 @@ vim.opt.updatetime = 50
 vim.opt_local.spell = true
 vim.opt_local.spelllang = "en_gb"
 
+vim.cmd([[autocmd FileType * set formatoptions-=cro]])
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank({
@@ -40,4 +42,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
             timeout = 200,
         })
     end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    callback = function()
+        vim.lsp.buf.format()
+    end
 })
