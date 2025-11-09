@@ -109,3 +109,5 @@ function conda
     end
     echo "No conda installation found in $CONDA_PATH"
 end
+
+fish_add_path /Users/kieranmang/.spicetify
