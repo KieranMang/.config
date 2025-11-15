@@ -46,6 +46,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
-        vim.lsp.buf.format()
+        vim.cmd("normal! magg=G`a<cmd>delmarks a<CR>")
     end
 })

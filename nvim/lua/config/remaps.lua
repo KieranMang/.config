@@ -17,7 +17,7 @@ vim.keymap.set("n", "<leader>;", "maA;<esc>`a<cmd>delmarks a<CR>")
 vim.keymap.set("n", "<leader>k", "maO<esc>`a<cmd>delmarks a<CR>")
 vim.keymap.set("n", "<leader>j", "mao<esc>`a<cmd>delmarks a<CR>")
 
-vim.keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>")
+vim.keymap.set("n", "<leader>fm", "magg=G`a<cmd>delmarks a<CR>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
