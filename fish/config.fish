@@ -80,7 +80,27 @@ function pyenv
     pyenv $argv
 end
 
+function python --wraps=python
+    set python_path (command -v python)
 
+    if not string match -q "*pyenv*" -- $python_path
+        pyenv
+        printf "\n\n\033[1;4mPYTHON OUTPUT:\033[0m\n\n"
+    end
+
+    command python $argv
+end
+
+function pip --wraps=pip
+    set pip_path (command -v pip)
+
+    if not string match -q "*pyenv*" -- $pip_path
+        pyenv
+        printf "\n\n\033[1;4mPYTHON OUTPUT:\033[0m\n\n"
+    end
+
+    command pip $argv
+end
 
 
 function y
